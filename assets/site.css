@@ -1,0 +1,478 @@
+/* legal.bumer.app: privacy and support pages for warranzo and everyseat.
+   No external fonts or scripts. Each app page wears its app's own colors
+   (warranzo: src/theme/tokens.ts in fis-garanti-arsivi/app; everyseat: src/theme/tokens.ts in safeweek-menu/app). */
+
+/* ---------- Base ---------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.0625rem; /* 17px, the iOS body size */
+  line-height: 1.55;
+  background: var(--page);
+  color: var(--ink);
+  text-rendering: optimizeLegibility;
+}
+
+.wrap {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.15;
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(2.25rem, 8vw, 3.25rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: 1.375rem;
+  font-weight: 750;
+  letter-spacing: -0.01em;
+  margin-top: 2.75rem;
+  margin-bottom: 0.75rem;
+}
+
+h3 {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  margin-top: 1.75rem;
+  margin-bottom: 0.25rem;
+}
+
+p {
+  margin: 0 0 0.9rem;
+}
+
+ul {
+  margin: 0 0 0.9rem;
+  padding-left: 1.2rem;
+}
+
+li {
+  margin-bottom: 0.45rem;
+}
+
+li::marker {
+  color: var(--marker);
+}
+
+a {
+  color: inherit;
+  text-decoration-thickness: 0.09em;
+  text-underline-offset: 0.18em;
+}
+
+a:hover {
+  text-decoration-thickness: 0.16em;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+strong {
+  font-weight: 700;
+}
+
+.quiet {
+  color: var(--ink-2);
+}
+
+.small {
+  font-size: 0.9375rem;
+}
+
+/* Site bar: which app, which page. Plain text links, no chips. */
+.bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 1.25rem;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  font-size: 0.9375rem;
+}
+
+.bar .app {
+  font-weight: 800;
+  font-size: 1.0625rem;
+  text-decoration: none;
+  margin-right: auto;
+}
+
+.bar a[aria-current="page"] {
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.updated {
+  margin-top: 0.75rem;
+  color: var(--ink-2);
+  font-size: 0.9375rem;
+}
+
+.lead {
+  font-size: 1.1875rem;
+  line-height: 1.5;
+}
+
+footer {
+  margin-top: 3.5rem;
+  padding-top: 1.25rem;
+  padding-bottom: 3rem;
+  font-size: 0.9375rem;
+  color: var(--ink-2);
+}
+
+footer p {
+  margin-bottom: 0.5rem;
+}
+
+/* Questions on support pages: a question is a heading, the answer sits right under it. */
+.faq h3 {
+  margin-top: 2rem;
+}
+
+/* ---------- warranzo: mint page, Deep Teal ink, thermal-paper receipt ---------- */
+
+.w {
+  --page: #a7ebdd; /* mint */
+  --ink: #0b3b3a; /* Deep Teal */
+  --ink-2: #326763; /* secondary text */
+  --marker: #1e7a5e; /* emerald */
+  --focus: #0b3b3a;
+  --paper: #ffffff;
+  --paper-ink: #0b3b3a;
+  --paper-ink-2: #326763;
+  --leader: #0b3b3a;
+  --perf: rgba(11, 59, 58, 0.45);
+}
+
+.w header.top {
+  padding-bottom: 0.5rem;
+}
+
+.w main > .lead:first-child {
+  margin-top: 1rem;
+}
+
+/* The dotted perforation, as on warranzo's receipts. */
+.w .perf {
+  height: 4px;
+  margin: 2.5rem 0 0;
+  background-image: radial-gradient(circle, var(--perf) 1.4px, transparent 1.6px);
+  background-size: 9px 4px;
+  background-repeat: repeat-x;
+  border: 0;
+}
+
+.w h2 {
+  margin-top: 2.5rem;
+}
+
+/* The retention ledger is printed on thermal paper with a torn foot. */
+.receipt {
+  position: relative;
+  background: var(--paper);
+  color: var(--paper-ink);
+  margin: 1.25rem -0.25rem 2.25rem;
+  padding: 1.5rem 1.25rem 2rem;
+  /* Torn foot: a zigzag cut from the bottom edge. */
+  --tooth: 12px;
+  -webkit-mask:
+    linear-gradient(#000 0 0) top / 100% calc(100% - var(--tooth)) no-repeat,
+    conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom / calc(var(--tooth) * 2) var(--tooth) repeat-x;
+  mask:
+    linear-gradient(#000 0 0) top / 100% calc(100% - var(--tooth)) no-repeat,
+    conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom / calc(var(--tooth) * 2) var(--tooth) repeat-x;
+}
+
+.receipt h2 {
+  margin-top: 0;
+  font-size: 1.25rem;
+}
+
+.receipt .note {
+  color: var(--paper-ink-2);
+  font-size: 0.9375rem;
+  margin: 0.15rem 0 0;
+}
+
+.ledger {
+  margin: 0.75rem 0 0;
+  padding: 0;
+}
+
+.ledger > div {
+  padding: 0.7rem 0;
+  border-top: 1px dashed rgba(11, 59, 58, 0.25);
+}
+
+.ledger > div:first-child {
+  border-top: 0;
+}
+
+/* Term ······ value, wrapping cleanly at narrow widths. */
+.ledger .row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+
+.ledger dt {
+  font-weight: 600;
+  flex: 0 1 auto;
+}
+
+.ledger .row::after {
+  content: "";
+  order: 2;
+  flex: 1 1 1.5rem;
+  min-width: 1.5rem;
+  border-bottom: 2px dotted var(--leader);
+  transform: translateY(-0.3em);
+  opacity: 0.55;
+}
+
+.ledger dd {
+  order: 3;
+  margin: 0;
+  flex: 0 1 auto;
+  text-align: right;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.ledger dt {
+  order: 1;
+}
+
+@media (max-width: 30rem) {
+  .ledger .row {
+    flex-wrap: wrap;
+  }
+  .ledger .row::after {
+    display: none;
+  }
+  .ledger dt {
+    font-weight: 500;
+  }
+  .ledger dd {
+    flex-basis: 100%;
+    text-align: left;
+    margin-top: 0.1rem;
+  }
+}
+
+.w .signoff {
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+@media (prefers-color-scheme: dark) {
+  .w {
+    --page: #0b3b3a;
+    --ink: #ffffff;
+    --ink-2: #a7ebdd;
+    --marker: #2ac6a2;
+    --focus: #a7ebdd;
+    --paper: #ebebeb; /* thermal paper at 92% in dark mode */
+    --paper-ink: #0b3b3a;
+    --paper-ink-2: #326763;
+    --leader: #0b3b3a;
+    --perf: rgba(167, 235, 221, 0.55);
+  }
+}
+
+/* ---------- everyseat: butter page, plum ink, cherry band with a white strip ---------- */
+
+.e {
+  --page: #ffd64a; /* butter */
+  --ink: #3b1340; /* plum */
+  --ink-2: #6b4c6f; /* plum 70 */
+  --marker: #3b1340;
+  --focus: #3b1340;
+  --band: #e5262e; /* cherry */
+  --band-ink: #ffffff;
+  --strip: #ffffff;
+  --strip-ink: #3b1340;
+  --rule: #3b1340;
+}
+
+/* The poster band: the page title on cherry, edge to edge. */
+.band {
+  background: var(--band);
+  color: var(--band-ink);
+  padding: 2.25rem 0 1.75rem;
+}
+
+.band h1 {
+  font-size: clamp(2.5rem, 10vw, 4rem);
+  letter-spacing: -0.03em;
+}
+
+.band .updated {
+  color: var(--band-ink);
+  opacity: 0.92;
+}
+
+/* The strip stuck under the band carries what matters most on every everyseat page. */
+.strip {
+  background: var(--strip);
+  color: var(--strip-ink);
+  padding: 1rem 0 1.1rem;
+  font-weight: 650;
+  font-size: 1.125rem;
+  line-height: 1.4;
+}
+
+.strip p {
+  margin: 0;
+}
+
+/* Sections open on the menu's thick rule. */
+.e h2 {
+  border-top: 4px solid var(--rule);
+  padding-top: 0.9rem;
+  margin-top: 2.75rem;
+}
+
+.e .bar a.app {
+  color: var(--ink);
+}
+
+.e .signoff {
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+@media (prefers-color-scheme: dark) {
+  .e {
+    --page: #3b1340;
+    --ink: #ffffff;
+    --ink-2: #e8d6ea; /* lilac */
+    --marker: #ffd64a;
+    --focus: #ffd64a;
+    --strip: #4f2356; /* plum surface */
+    --strip-ink: #ffffff;
+    --rule: #ffd64a; /* butter only as line and type in dark mode */
+  }
+}
+
+/* ---------- Index: the two apps side by side, each in its own colors ---------- */
+
+.home {
+  --page: #ffffff;
+  --ink: #1a1a1a;
+  --ink-2: #555555;
+  --marker: #1a1a1a;
+  --focus: #1a1a1a;
+}
+
+.home main {
+  padding-top: 3rem;
+}
+
+.home h1 {
+  font-size: clamp(2rem, 7vw, 2.75rem);
+}
+
+.apps {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  margin: 2rem 0 0;
+}
+
+@media (min-width: 44rem) {
+  .apps {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.app-block {
+  padding: 1.75rem 1.5rem 2rem;
+}
+
+.app-block h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.75rem;
+  font-weight: 800;
+  border: 0;
+  padding: 0;
+}
+
+.app-block p {
+  margin-bottom: 1rem;
+}
+
+.app-block ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.app-block li {
+  margin: 0 0 0.35rem;
+  font-weight: 650;
+}
+
+.app-block.w-block {
+  background: #a7ebdd;
+  color: #0b3b3a;
+}
+
+.app-block.e-block {
+  background: #ffd64a;
+  color: #3b1340;
+  border-top: 10px solid #e5262e;
+}
+
+@media (min-width: 44rem) {
+  .app-block.e-block {
+    border-top-width: 10px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .home {
+    --page: #161616;
+    --ink: #f2f2f2;
+    --ink-2: #bdbdbd;
+    --marker: #f2f2f2;
+    --focus: #f2f2f2;
+  }
+}
+
+@media print {
+  .band,
+  .strip,
+  .receipt,
+  .app-block {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
