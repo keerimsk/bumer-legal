@@ -60,7 +60,6 @@
     <ul>
       <li>Your email address, to send you sign-in codes.</li>
       <li>An account ID we assign, and when you signed up and last signed in.</li>
-      <li>For each signed-in iPhone, the IP address and device type our sign-in service records with the session.</li>
       <li>When you agreed to the health data text, and to which version, and when you accepted the “not medical advice” notice.</li>
     </ul>
 
@@ -85,13 +84,15 @@
       <li>That you agreed to share your table, and to which version of the text.</li>
     </ul>
 
+    <h3>everyseat Plus</h3>
+    <p>If you subscribe, we keep the plan, Apple’s transaction IDs and when the subscription ends. Our servers check Apple’s signature on it before Plus lifts your table’s limits. Apple handles payment, and we never see your card.</p>
+
     <h3>Rule break reports</h3>
     <p>When you flag a dinner, we keep the date, the dinner, the rules you think it broke, your note and the app version. No names are sent. A copy stays on your iPhone.</p>
 
     <h3>Only on your iPhone</h3>
     <ul>
       <li>Your planning and grocery day reminders. They’re scheduled on your iPhone.</li>
-      <li>Your Plus status. Apple handles payment, and we never see your card.</li>
       <li>Your iPhone keeps your latest 12 weeks. Older weeks stay in your account.</li>
     </ul>
 
@@ -108,12 +109,16 @@
     <ul>
       <li><strong>Your account, table, weeks and reports:</strong> until you delete them or your account.</li>
       <li><strong>A deleted seat:</strong> its name, allergies, diets and no-thanks are erased right away. A blank mark with only its ID and time stays for 90 days so your other iPhones learn it’s gone. Deleted favorites, reactions and list checks leave the same kind of mark for 90 days.</li>
-      <li><strong>Sign-in sessions,</strong> with their IP address and device type: until you sign out or delete your account.</li>
+      <li><strong>Sign-in sessions:</strong> they end after 180 days unused, and 365 days after sign-in at most. Then the app asks you to sign in again.</li>
+      <li><strong>The IP address and device details of a session:</strong> not kept.</li>
+      <li><strong>Sign-in history in our database:</strong> not kept.</li>
+      <li><strong>An email that asked for a code but never used it:</strong> deleted after 1 day.</li>
+      <li><strong>Your Plus record:</strong> deleted with your account.</li>
       <li><strong>Sign-in codes:</strong> 10 minutes, one use.</li>
       <li><strong>Invites:</strong> a code works once and expires after 7 days.</li>
       <li><strong>Database backups:</strong> none kept today.</li>
     </ul>
-    <p>Supabase also keeps logs of sign-ins and of requests to our servers, which can include an IP address, for security and to run the service.</p>
+    <p>Supabase also keeps short-lived technical logs of requests to our servers, which can include an IP address, for a limited time set by its service. We don’t read them.</p>
 
     <h2 id="delete">Deleting your data</h2>
     <ul>
